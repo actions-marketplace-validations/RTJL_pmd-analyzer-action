@@ -1,5 +1,5 @@
 name: 'PMD Analyzer Action'
-description: 'Action to run PMD analyzer'
+description: 'Annotates violations from PMD analyzer'
 inputs:
   pmd-version:
     description: 'PMD Version'
@@ -25,4 +25,4 @@ runs:
       shell: bash
 branding:
   icon: 'alert-octagon'
-  color: 'red'
+  color: 'orange'
