@@ -2,31 +2,31 @@
 
 [GitHub Action](https://github.com/features/actions) to run [PMD Analyzer](https://github.com/pmd/pmd) static code analysis checks.
 
-## Success Criteria
+## Action Result
 
-By default, this action will succeed. See [Usage](#Usage) below.
+By default, this action will succeed. Violations are annotated as warnings. See [Usage](#Usage) below.
 
 ## Usage
 
 ### Basic
 
-Basic configuration that will run PMD.
+Basic configuration to run PMD analyzer action.
 
 ```yaml
 name: CI
-on: [pull_request]
+on: [push]
 jobs:
   analyze:
     name: Run PMD
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - id: pmd
-      uses: rtjl/pmd-analyzer-action@v0.1.3-alpha
-      with:
-        pmd-version: '6.31.0'
-        source-path: './src'
-        rule-path: './PMD.Rules.xml'
+      - uses: actions/checkout@v2
+      - id: pmd
+        uses: rtjl/pmd-analyzer-action@v0.1.3-alpha
+        with:
+          pmd-version: '6.31.0'
+          source-path: './src'
+          rule-path: './PMD.Rules.xml'
 ```
 
 ## Inputs
@@ -42,3 +42,7 @@ jobs:
 | Name | Description |
 |------|-------------|
 | no-of-violations    | No of violations found.
+
+## Gotchas
+
+Due to this [limitation](https://github.community/t/annotation-limitation/17998), only the first 10 violations will be displayed. Check logs to view all.
