@@ -18,7 +18,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/ExecutePmd.sh
+    - run: ${{ github.action_path }}/ExecutePmd.sh ${{ inputs.pmd-version }} ${{ inputs.source-path }} ${{ inputs.rule-path }}
       shell: bash
     - run: python3 ${{ github.action_path}}/parse_output.py
       shell: bash
