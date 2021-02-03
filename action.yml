@@ -14,11 +14,12 @@ inputs:
 outputs:
   no-of-violations:
     description: "No of violations"
-    value: ${{ steps.run-pmd.outputs.no-of-violations }}
+    value: ${{ steps.parse-output.outputs.no-of-violations }}
 runs:
   using: "composite"
   steps:
     - run: ${{ github.action_path }}/ExecutePmd.sh ${{ inputs.pmd-version }} ${{ inputs.source-path }} ${{ inputs.rule-path }}
       shell: bash
-    - run: python3 ${{ github.action_path}}/parse_output.py
+    - id: parse-output
+      run: python3 ${{ github.action_path}}/parse_output.py
       shell: bash
