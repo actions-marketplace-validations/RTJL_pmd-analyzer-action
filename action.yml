@@ -23,3 +23,6 @@ runs:
     - id: parse-output
       run: python3 ${{ github.action_path}}/parse_output.py
       shell: bash
+branding:
+  icon: 'alert-octagon'
+  color: 'red'
