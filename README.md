@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: pmd
-        uses: rtjl/pmd-analyzer-action@v0.1.3-alpha
+        uses: rtjl/pmd-analyzer-action@v0.1.4-alpha
         with:
           pmd-version: '6.31.0'
           source-path: './src'
