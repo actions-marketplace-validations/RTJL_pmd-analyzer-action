@@ -1,0 +1,24 @@
+name: 'PMD Analyzer Action'
+description: 'Action to run PMD analyzer'
+inputs:
+  pmd-version:
+    description: 'PMD Version'
+    required: true
+    default: '6.31.0'
+  source-path:
+    description: 'Source Path'
+    required: true
+  rule-path:
+    description: 'Ruleset file'
+    required: true
+outputs:
+  no-of-violations:
+    description: "No of violations"
+    value: ${{ steps.run-pmd.outputs.no-of-violations }}
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/ExecutePmd.sh
+      shell: bash
+    - run: python3 ${{ github.action_path}}/parse_output.py
+      shell: bash
