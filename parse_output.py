@@ -16,7 +16,7 @@ warning_message_template = "Violation found in {fileName} from Line:{startLine},
 
 output_messages_all = ""
 
-warning_message_list = []
+output_message_list = []
 warning_message_list = []
 
 with open('pmd-output.json') as file:
@@ -26,12 +26,12 @@ with open('pmd-output.json') as file:
       warning_message = warning_message_template.format(ruleset = v['ruleset'], rule = v['rule'], description = v['description'], 
               startLine = v['beginline'], endLine = v['endline'], startCol = v['begincolumn'], endCol = v['endcolumn'], 
               url = v['externalInfoUrl'], fileName = file['filename'])
-      warning_message_list.append(warning_message)
+      output_message_list.append(warning_message)
       warning_output = output_template.format(file = file['filename'], line = v['beginline'], col = v['begincolumn'], msg = warning_message)
       warning_message_list.append(warning_output)
 
 print(noOfViolations_output_template.format(no_of_violations = len(warning_message_list)))
-print(message_output_template.format(violations_list = "\n".join(warning_message_list[1:])))
+print(message_output_template.format(violations_list = "\n".join(output_message_list[1:])))
 
 for warning_message in warning_message_list:
   print(warning_message)
