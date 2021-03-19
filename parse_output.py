@@ -28,3 +28,6 @@ print(noOfViolations_output_template.format(no_of_violations = len(warning_messa
 
 for warning_message in warning_message_list:
   print(warning_message)
+
+if len(warning_message_list) > 0 and shouldThrowError:
+  sys.exit('PMD violations detected')
