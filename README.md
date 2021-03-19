@@ -36,7 +36,7 @@ jobs:
 | pmd-version    | 6.31.0   | PMD version to use.
 | source-path    | \<none>  | The path for PMD to analyze.
 | rule-path      | \<none>  | The ruleset file for PMD to use.
-| should-throw-error | false | Set to true if you want PMD warnings to appear as error messages instead of warnings on GitHub. Default is false.
+| should-throw-error | false |  Default is false. Set to true if you want: <br/>1) PMD warnings to appear as error messages instead of warnings on GitHub<br/>2) The action to fail instead of pass.
 
 ## Outputs
 
