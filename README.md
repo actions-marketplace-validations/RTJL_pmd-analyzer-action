@@ -43,6 +43,7 @@ jobs:
 | Name | Description |
 |------|-------------|
 | no-of-violations    | No of violations found.
+| violations | String containing all the error messages.
 
 ## Gotchas
 
