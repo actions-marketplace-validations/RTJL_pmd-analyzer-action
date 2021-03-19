@@ -11,6 +11,10 @@ inputs:
   rule-path:
     description: 'Ruleset file'
     required: true
+  should-throw-error:
+    description: 'Set to true if you want it to fail on PMD warnings. Default is false.'
+    required: false
+    default: false
 outputs:
   no-of-violations:
     description: "No of violations"
@@ -21,7 +25,7 @@ runs:
     - run: ${{ github.action_path }}/ExecutePmd.sh ${{ inputs.pmd-version }} ${{ inputs.source-path }} ${{ inputs.rule-path }}
       shell: bash
     - id: parse-output
-      run: python3 ${{ github.action_path}}/parse_output.py
+      run: python3 ${{ github.action_path}}/parse_output.py ${{ inputs.should-throw-error }}
       shell: bash
 branding:
   icon: 'alert-octagon'
